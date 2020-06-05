@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="${parameter.mapperPackage}.${parameter.capitalizedName}Mapper">
+
+    <resultMap id="BaseResultMap" type="${parameter.modelPackage}.${parameter.capitalizedName}">
+#foreach($field in ${parameter.databaseParameterList})
+    #if(${field.primary})
+        <id column="${field.name}" property="${field.name}"/>
+    #else
+        <result column="${field.name}" property="${field.name}"/>
+    #end
+#end
+    </resultMap>
+
+    <sql id="BaseColumnList">
+         ${parameter.fieldNames}
+    </sql>
+
+    <select id="query${parameter.capitalizedName}List" resultMap="BaseResultMap">
+        SELECT <include refid="BaseColumnList"/> FROM `${parameter.tableName}`
+    </select>
+
+</mapper>

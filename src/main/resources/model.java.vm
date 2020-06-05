@@ -1,0 +1,52 @@
+package ${parameter.modelPackage};
+
+import com.baomidou.mybatisplus.activerecord.Model;
+import com.baomidou.mybatisplus.annotations.*;
+import com.baomidou.mybatisplus.enums.IdType;
+import io.swagger.annotations.ApiModelProperty;
+
+import java.io.Serializable;
+
+/**
+ * ${parameter.comment}实体类
+ *
+ * @author ${parameter.author}
+ * @date ${parameter.date}
+ */
+@TableName("${parameter.tableName}")
+public class ${parameter.capitalizedName} extends Model<${parameter.capitalizedName}> {
+
+    private static final long serialVersionUID = 1L;
+#foreach($field in ${parameter.databaseParameterList})
+
+    @ApiModelProperty("${field.notes}")
+    #if(${field.primary})
+    @TableId(value = "${field.tableName}", type = IdType.AUTO)
+    #else
+        #if(${field.tableName} != ${field.name})
+    @TableField("${field.tableName}")
+        #end
+    #end
+    private ${field.type} ${field.name};
+#end
+#foreach($field in ${parameter.databaseParameterList})
+
+    public ${field.type} get${field.capitalizedName}() {
+        return this.${field.name};
+    }
+
+    public void set${field.capitalizedName}(${field.type} ${field.name}) {
+        this.${field.name} = ${field.name};
+    }
+#end
+
+#foreach($field in ${parameter.databaseParameterList})
+    #if(${field.primary})
+    @Override
+    protected Serializable pkVal() {
+        return this.${field.name};
+    }
+    #end
+#end
+
+}

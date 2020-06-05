@@ -1,0 +1,56 @@
+package ${parameter.controllerPackage};
+
+import com.shustudio.common.message.AjaxResult;
+import io.swagger.annotations.*;
+import org.springframework.web.bind.annotation.*;
+import org.springframework.beans.factory.annotation.Autowired;
+import com.shustudio.vo.PaginationVO;
+import ${parameter.modelPackage}.${parameter.capitalizedName};
+import ${parameter.servicePackage}.I${parameter.capitalizedName}Service;
+
+/**
+ * ${parameter.comment}前端控制器
+ *
+ * @author ${parameter.author}
+ * @date ${parameter.date}
+ */
+@Api(tags = "${parameter.comment}接口")
+@RestController
+@RequestMapping("/${parameter.name}")
+public class ${parameter.capitalizedName}Controller {
+
+    @Autowired
+    private I${parameter.capitalizedName}Service i${parameter.capitalizedName}Service;
+
+    @ApiOperation(value = "获取${parameter.comment}列表")
+    @GetMapping("/list")
+    public AjaxResult<${parameter.capitalizedName}> list(PaginationVO pagination) {
+        return AjaxResult.success(i${parameter.capitalizedName}Service.query${parameter.capitalizedName}List(pagination));
+    }
+
+    @ApiOperation(value = "按id获取${parameter.comment}")
+    @GetMapping("")
+    public AjaxResult<${parameter.capitalizedName}> detail(@RequestParam Long id) {
+        return AjaxResult.success(i${parameter.capitalizedName}Service.query${parameter.capitalizedName}ById(id));
+    }
+
+    @ApiOperation(value = "按id删除${parameter.comment}")
+    @DeleteMapping("")
+    public AjaxResult<String> remove(@RequestParam Long id) {
+        return AjaxResult.success(i${parameter.capitalizedName}Service.remove${parameter.capitalizedName}ById(id) == 1 ? "删除成功" : "删除失败,请尝试刷新页面!");
+    }
+
+    @ApiOperation(value = "添加${parameter.comment}")
+    @PostMapping("")
+    public AjaxResult<String> add(@RequestBody ${parameter.capitalizedName} ${parameter.name}) {
+        return AjaxResult.success(i${parameter.capitalizedName}Service.add${parameter.capitalizedName}(${parameter.name}) == 1 ? "添加成功" : "添加失败,请保存数据尝试刷新页面!");
+    }
+
+    @ApiOperation(value = "按id修改${parameter.comment}")
+    @PutMapping("")
+    public AjaxResult<String> edit(@RequestBody ${parameter.capitalizedName} ${parameter.name}) {
+        i${parameter.capitalizedName}Service.edit${parameter.capitalizedName}(${parameter.name});
+        return AjaxResult.success("修改成功");
+    }
+
+}

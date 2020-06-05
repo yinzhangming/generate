@@ -1,0 +1,51 @@
+package ${parameter.servicePackage};
+
+import com.baomidou.mybatisplus.plugins.Page;
+import ${parameter.modelPackage}.${parameter.capitalizedName};
+import com.baomidou.mybatisplus.service.IService;
+import com.shustudio.vo.PaginationVO;
+
+/**
+ * ${parameter.comment}服务接口
+ *
+ * @author ${parameter.author}
+ * @date ${parameter.date}
+ */
+public interface I${parameter.capitalizedName}Service extends IService<${parameter.capitalizedName}> {
+
+    /**
+     * 分页查询${parameter.comment}
+     *
+     * @return
+     */
+    Page query${parameter.capitalizedName}List(PaginationVO pagination);
+
+    /**
+     * 按id查询${parameter.comment}详情
+     *
+     * @return
+     */
+    ${parameter.capitalizedName} query${parameter.capitalizedName}ById(Long id);
+
+    /**
+     * 按id删除${parameter.comment}
+     *
+     * @return
+     */
+    Integer remove${parameter.capitalizedName}ById(Long id);
+
+    /**
+     * 新增${parameter.comment}
+     *
+     * @return
+     */
+    Integer add${parameter.capitalizedName}(${parameter.capitalizedName} ${parameter.name});
+
+    /**
+     * 按id修改${parameter.comment}
+     *
+     * @return
+     */
+    Integer edit${parameter.capitalizedName}(${parameter.capitalizedName} ${parameter.name});
+
+}

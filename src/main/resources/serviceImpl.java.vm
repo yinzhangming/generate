@@ -1,0 +1,46 @@
+package ${parameter.serviceImpPackage};
+
+import com.baomidou.mybatisplus.plugins.Page;
+import com.baomidou.mybatisplus.service.impl.ServiceImpl;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
+import ${parameter.modelPackage}.${parameter.capitalizedName};
+import ${parameter.servicePackage}.I${parameter.capitalizedName}Service;
+import ${parameter.mapperPackage}.${parameter.capitalizedName}Mapper;
+import com.shustudio.vo.PaginationVO;
+
+/**
+ * ${parameter.comment}服务实现
+ *
+ * @author ${parameter.author}
+ * @date ${parameter.date}
+ */
+@Service
+public class ${parameter.capitalizedName}ServiceImpl extends ServiceImpl<${parameter.capitalizedName}Mapper, ${parameter.capitalizedName}> implements I${parameter.capitalizedName}Service {
+
+    @Autowired
+    private ${parameter.capitalizedName}Mapper ${parameter.name}Mapper;
+
+    public Page query${parameter.capitalizedName}List(PaginationVO pagination) {
+        Page<TestFuck> page = new Page<TestFuck>(pagination.getCurrent(), pagination.getSize(), pagination.getSort(), pagination.getOrder());
+        page.setRecords(${parameter.name}Mapper.query${parameter.capitalizedName}List(page, pagination));
+        return page;
+    }
+
+    public ${parameter.capitalizedName} query${parameter.capitalizedName}ById(Long id) {
+        return ${parameter.name}Mapper.selectById(id);
+    }
+
+    public Integer remove${parameter.capitalizedName}ById(Long id) {
+        return ${parameter.name}Mapper.deleteById(id);
+    }
+
+    public Integer add${parameter.capitalizedName}(${parameter.capitalizedName} ${parameter.name}) {
+        return ${parameter.name}Mapper.insert(${parameter.name});
+    }
+
+    public Integer edit${parameter.capitalizedName}(${parameter.capitalizedName} ${parameter.name}) {
+        return ${parameter.name}Mapper.updateById(${parameter.name});
+    }
+
+}
