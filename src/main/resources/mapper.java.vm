@@ -25,6 +25,6 @@ public interface ${parameter.capitalizedName}Mapper extends BaseMapper<${paramet
      * @param pagination 所需要的条件参数
      * @return
      */
-    List<TestFuck> query${parameter.capitalizedName}List(Page<TestFuck> page, @Param("param") PaginationVO pagination);
+    List<${parameter.capitalizedName}> query${parameter.capitalizedName}List(Page<${parameter.capitalizedName}> page, @Param("param") PaginationVO pagination);
 
 }
