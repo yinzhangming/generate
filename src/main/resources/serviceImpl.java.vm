@@ -22,7 +22,7 @@ public class ${parameter.capitalizedName}ServiceImpl extends ServiceImpl<${param
     private ${parameter.capitalizedName}Mapper ${parameter.name}Mapper;
 
     public Page query${parameter.capitalizedName}List(PaginationVO pagination) {
-        Page<TestFuck> page = new Page<TestFuck>(pagination.getCurrent(), pagination.getSize(), pagination.getSort(), pagination.getOrder());
+        Page<${parameter.capitalizedName}> page = new Page<${parameter.capitalizedName}>(pagination.getCurrent(), pagination.getSize(), pagination.getSort(), pagination.getOrder());
         page.setRecords(${parameter.name}Mapper.query${parameter.capitalizedName}List(page, pagination));
         return page;
     }
