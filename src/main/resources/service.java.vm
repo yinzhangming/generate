@@ -1,9 +1,9 @@
 package ${parameter.servicePackage};
 
-import com.github.pagehelper.PageInfo;
 import ${parameter.modelPackage}.${parameter.capitalizedName};
-import com.baomidou.mybatisplus.service.IService;
-import com.shustudio.vo.PaginationVO;
+import com.baomidou.mybatisplus.core.metadata.IPage;
+import com.baomidou.mybatisplus.extension.service.IService;
+import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
 
 /**
  * ${parameter.comment}服务接口
@@ -18,7 +18,7 @@ public interface I${parameter.capitalizedName}Service extends IService<${paramet
      *
      * @return
      */
-    PageInfo query${parameter.capitalizedName}List(PaginationVO pagination);
+    IPage query${parameter.capitalizedName}List(Page page);
 
     /**
      * 按id查询${parameter.comment}详情

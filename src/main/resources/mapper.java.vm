@@ -1,13 +1,10 @@
 package ${parameter.mapperPackage};
 
-import com.baomidou.mybatisplus.mapper.BaseMapper;
-import com.shustudio.vo.PaginationVO;
-import com.github.pagehelper.PageInfo;
-import org.apache.ibatis.annotations.Param;
+import com.baomidou.mybatisplus.core.mapper.BaseMapper;
+import com.baomidou.mybatisplus.core.metadata.IPage;
 import ${parameter.modelPackage}.${parameter.capitalizedName};
 import org.springframework.stereotype.Repository;
-
-import java.util.List;
+import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
 
 /**
  * ${parameter.comment}Mapper接口
@@ -21,9 +18,9 @@ public interface ${parameter.capitalizedName}Mapper extends BaseMapper<${paramet
     /**
      * 分页查询${parameter.comment}列表
      *
-     * @param pagination 所需要的条件参数
+     * @param page 所需要的条件参数
      * @return
      */
-    List<${parameter.capitalizedName}> query${parameter.capitalizedName}List(PaginationVO pagination);
+    IPage query${parameter.capitalizedName}List(Page page);
 
 }

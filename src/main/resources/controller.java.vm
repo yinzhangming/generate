@@ -1,10 +1,10 @@
 package ${parameter.controllerPackage};
 
-import com.shustudio.common.message.AjaxResult;
+import com.av.config.AjaxResult;
 import io.swagger.annotations.*;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.beans.factory.annotation.Autowired;
-import com.shustudio.vo.PaginationVO;
+import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
 import ${parameter.modelPackage}.${parameter.capitalizedName};
 import ${parameter.servicePackage}.I${parameter.capitalizedName}Service;
 
@@ -14,7 +14,7 @@ import ${parameter.servicePackage}.I${parameter.capitalizedName}Service;
  * @author ${parameter.author}
  * @date ${parameter.date}
  */
-@Api(tags = "${parameter.comment}接口")
+@Api(tags = "${parameter.comment}控制器")
 @RestController
 @RequestMapping("/${parameter.name}")
 public class ${parameter.capitalizedName}Controller {
@@ -24,8 +24,8 @@ public class ${parameter.capitalizedName}Controller {
 
     @ApiOperation(value = "获取${parameter.comment}列表")
     @GetMapping("/list")
-    public AjaxResult<${parameter.capitalizedName}> list(PaginationVO pagination) {
-        return AjaxResult.success(i${parameter.capitalizedName}Service.query${parameter.capitalizedName}List(pagination));
+    public AjaxResult<${parameter.capitalizedName}> list(Page page) {
+        return AjaxResult.success(i${parameter.capitalizedName}Service.query${parameter.capitalizedName}List(page));
     }
 
     @ApiOperation(value = "按id获取${parameter.comment}")
